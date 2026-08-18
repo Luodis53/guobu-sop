@@ -1,0 +1,15 @@
+# Ignore everything except the SOP site
+*
+!.gitignore
+!.tmp/excel-extract-v2/index.html
+!.tmp/excel-extract-v2/index-gh.html
+!.tmp/excel-extract-v2/images/
+!.tmp/excel-extract-v2/sheet-images/
+
+# Ignore large intermediate files
+.tmp/excel-extract-v2/data.json
+.tmp/excel-extract-v2/sheets-pdf/
+.tmp/excel-extract-v2/sop.pdf
+.tmp/excel-extract-v2/images/*.tmp
+.tmp/github-push-payload/
+.tmp/github-push-tmp/
