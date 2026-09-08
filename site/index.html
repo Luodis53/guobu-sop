@@ -208,9 +208,14 @@ function buildQA(){
   catDiv.innerHTML = '';
   cats.forEach(function(c){
     const btn = document.createElement('button');
-    btn.className = 'qa-cat' + (c === '全部' ? ' on' : '');
+    btn.className = 'qa-cat' + ((qaFilter === 'all' && c === '全部') || qaFilter === c ? ' on' : '');
     btn.textContent = c;
-    btn.onclick = function(){qaFilter = c === '全部' ? 'all' : c; renderQA();};
+    btn.onclick = function(){
+      qaFilter = c === '全部' ? 'all' : c;
+      document.querySelectorAll('.qa-cat').forEach(function(el){ el.classList.remove('on'); });
+      btn.classList.add('on');
+      renderQA();
+    };
     catDiv.appendChild(btn);
   });
   renderQA();
@@ -284,7 +289,13 @@ function buildSN(){
     const btn = document.createElement('button');
     btn.className = 'sn-cat' + (cat === snCategory ? ' on' : '');
     btn.textContent = cat;
-    btn.onclick = function(){snCategory = cat; snBrand = Object.keys(snData[cat])[0]; renderSN();};
+    btn.onclick = function(){
+      snCategory = cat;
+      snBrand = Object.keys(snData[cat])[0];
+      document.querySelectorAll('.sn-cat').forEach(function(el){ el.classList.remove('on'); });
+      btn.classList.add('on');
+      renderSN();
+    };
     catDiv.appendChild(btn);
   });
   if (!snBrand || !snData[snCategory][snBrand]) snBrand = Object.keys(snData[snCategory])[0];
