@@ -115,6 +115,7 @@ td.sec{background:#fafafa;color:#1f1f1f;font-weight:700;font-size:14px;border-le
 
   <div id="sn-panel" class="panel">
     <div class="sn-cats" id="sn-cats"></div>
+    <input type="text" class="search-box" id="sn-search" placeholder="输入品牌名称，如：华为、小米..." oninput="filterSNBrands()">
     <div class="sn-brands" id="sn-brands"></div>
     <div id="sn-content"></div>
   </div>
@@ -131,6 +132,7 @@ var currentSub = 0;
 var qaFilter = 'all';
 var snCategory = '手机';
 var snBrand = null;
+var snSearch = '';
 
 function colLetterToNum(l){let n=0;for(let i=0;i<l.length;i++)n=n*26+(l.charCodeAt(i)-64);return n}
 function isCovered(merged,row,col){for(let i=0;i<merged.length;i++){const m=merged[i].match(/^([A-Z]+)(\d+):([A-Z]+)(\d+)$/);if(!m)continue;const c1=colLetterToNum(m[1]),r1=+m[2],c2=colLetterToNum(m[3]),r2=+m[4];if(row>=r1&&row<=r2&&col>=c1&&col<=c2)return!(col===c1&&row===r1)}return false}
@@ -343,24 +345,43 @@ function buildSN(){
   renderSN();
 }
 
+function filterSNBrands(){
+  snSearch = document.getElementById('sn-search').value.trim().toLowerCase();
+  renderSN();
+}
+
 function renderSN(){
   const brandDiv = document.getElementById('sn-brands');
   brandDiv.innerHTML = '';
   const brands = Object.keys(snData[snCategory] || {});
-  brands.forEach(function(b){
-    const btn = document.createElement('button');
-    btn.className = 'sn-brand' + (b === snBrand ? ' on' : '');
-    btn.textContent = b;
-    btn.onclick = function(){snBrand = b; renderSN();};
-    brandDiv.appendChild(btn);
+  const filtered = brands.filter(function(b){
+    return !snSearch || b.toLowerCase().includes(snSearch);
   });
 
-  const ct = document.getElementById('sn-content');
+  if (filtered.length === 0) {
+    brandDiv.innerHTML = '<div class="sn-empty">未找到相关品牌</div>';
+  } else {
+    filtered.forEach(function(b){
+      const btn = document.createElement('button');
+      btn.className = 'sn-brand' + (b === snBrand ? ' on' : '');
+      btn.textContent = b;
+      btn.onclick = function(){snBrand = b; renderSN();};
+      brandDiv.appendChild(btn);
+    });
+  }
+
   const method = snData[snCategory] && snData[snCategory][snBrand];
-  ct.innerHTML = '<div class="sn-content">' +
-                   '<div class="sn-brand-title">' + esc(snBrand) + '</div>' +
-                   '<div class="sn-step">' + esc(method) + '</div>' +
-                 '</div>';
+  const ct = document.getElementById('sn-content');
+  if (method) {
+    ct.innerHTML = '<div class="sn-content">' +
+                     '<div class="sn-brand-title">' + esc(snBrand) + '</div>' +
+                     '<div class="sn-step">' + esc(method) + '</div>' +
+                   '</div>';
+  } else if (!snSearch) {
+    ct.innerHTML = '';
+  } else {
+    ct.innerHTML = '<div class="sn-empty" style="padding:24px 0;text-align:center;color:#9ca3af">选择品牌查看 SN 码调取方法</div>';
+  }
 }
 
 function zoom(s){document.getElementById('zi').src=s;document.getElementById('zm').classList.add('show')}
