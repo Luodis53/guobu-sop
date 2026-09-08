@@ -358,6 +358,11 @@ function renderSN(){
     return !snSearch || b.toLowerCase().includes(snSearch);
   });
 
+  // Auto-select first matching brand when current selection is hidden
+  if (snSearch && filtered.length > 0 && (!snBrand || !filtered.includes(snBrand))) {
+    snBrand = filtered[0];
+  }
+
   if (filtered.length === 0) {
     brandDiv.innerHTML = '<div class="sn-empty">未找到相关品牌</div>';
   } else {
@@ -377,10 +382,8 @@ function renderSN(){
                      '<div class="sn-brand-title">' + esc(snBrand) + '</div>' +
                      '<div class="sn-step">' + esc(method) + '</div>' +
                    '</div>';
-  } else if (!snSearch) {
-    ct.innerHTML = '';
   } else {
-    ct.innerHTML = '<div class="sn-empty" style="padding:24px 0;text-align:center;color:#9ca3af">选择品牌查看 SN 码调取方法</div>';
+    ct.innerHTML = '';
   }
 }
 
