@@ -1,0 +1,170 @@
+[
+  {
+    "question": "菜鸟、拼多多虚拟号失效怎么处理",
+    "answer": "[object Object]",
+    "type": "异常处理",
+    "escalation": ""
+  },
+  {
+    "question": "SN码的其他名称有哪些？",
+    "answer": "SN码，中文名为序列号，也有其他名称，如【Serial Number】、【SERIAL  NO.】、【SN】、【S/N】，部分笔记本显示为【S/T】",
+    "type": "小技巧",
+    "escalation": ""
+  },
+  {
+    "question": "[object Object]",
+    "answer": "[object Object]",
+    "type": "异常处理",
+    "escalation": "滞留标记原因，将快件带回网点，联系各团队接口同事"
+  },
+  {
+    "question": "多次拍照审核不通过",
+    "answer": "[object Object]",
+    "type": "异常处理",
+    "escalation": "杨小平（01369310）"
+  },
+  {
+    "question": "国补件是否可转寄退回",
+    "answer": "[object Object]",
+    "type": "异常处理",
+    "escalation": "联系各团队接口同事"
+  },
+  {
+    "question": "同城小哥怎么补录？",
+    "answer": "[object Object]",
+    "type": "异常处理",
+    "escalation": ""
+  },
+  {
+    "question": "号码不对无法妥投",
+    "answer": "直接拨打10秒钟就能解除电联管控限制",
+    "type": "号码不对",
+    "escalation": ""
+  },
+  {
+    "question": "同城小哥补录任务时，没有路径",
+    "answer": "可线下收集正确的图片给到各品牌专项客服进行后台人工补录",
+    "type": "补录",
+    "escalation": ""
+  },
+  {
+    "question": "需更换其他小哥去补录照片怎么办",
+    "answer": "[object Object]",
+    "type": "补录",
+    "escalation": ""
+  },
+  {
+    "question": "AI审核反馈不清晰",
+    "answer": "[object Object]",
+    "type": "异常处理",
+    "escalation": ""
+  },
+  {
+    "question": "2合1照片拍摄技巧",
+    "answer": "[object Object]",
+    "type": "异常处理",
+    "escalation": ""
+  },
+  {
+    "question": "收方号码不对无法妥投怎么办",
+    "answer": "强制拨打10秒解除电联管控，不管有没有拨通",
+    "type": "异常处理",
+    "escalation": ""
+  },
+  {
+    "question": "彩盒丢了怎么办",
+    "answer": "务必优先找回，若无法找回可能有理赔风险；实在无法找回的，需留存举证材料（电话沟通录音、客户书面说明等），反馈给专项客服留档，地区也需自行留档",
+    "type": "异常处理",
+    "escalation": ""
+  },
+  {
+    "question": "怎么查看手机、平板的SN码/IMEI码？",
+    "answer": "详见本文档附表《各品牌SN码调出指引》",
+    "type": "系统类",
+    "escalation": "各团队接口同事、周运丹、黄洪涛、程英渊、叶灵"
+  },
+  {
+    "question": "如何识别哪个平台的国补订单",
+    "answer": "详见本文档附表《国补订单识别》",
+    "type": "系统类",
+    "escalation": "各团队接口同事、周运丹、黄洪涛、程英渊、叶灵"
+  },
+  {
+    "question": "系统里怎么看SN码是否正确？怎么查SN\\IMEI码？",
+    "answer": "[object Object]",
+    "type": "系统类",
+    "escalation": ""
+  },
+  {
+    "question": "AI校验哪些图片",
+    "answer": "[object Object]",
+    "type": "系统类",
+    "escalation": ""
+  },
+  {
+    "question": "怎么监控T-1数据",
+    "answer": "（仅适用地区同事申请）\nT-1监控报表：丰景台-客户国补订单运单明细报表_地区",
+    "type": "系统类",
+    "escalation": ""
+  },
+  {
+    "question": "快件已退回的国补任务如何处理？",
+    "answer": "[object Object]",
+    "type": "退回件",
+    "escalation": ""
+  },
+  {
+    "question": "没有国补任务的怎么处理？",
+    "answer": "有国补标识，但无微派任务，按普通件派送即可",
+    "type": "无微派任务",
+    "escalation": ""
+  },
+  {
+    "question": "微派计提怎么兑现？",
+    "answer": "1、顺丰小哥：在任务完成后，7天内可以在微应用【一线计提查询】-增值服务计提查看，计提随工资月发放\n2、同城：任务完成后，次日发放到骑士账户，具体路径：骑士APP-今日收入-今日明细，T+3支持体现",
+    "type": "计提",
+    "escalation": ""
+  },
+  {
+    "question": "超范围快件如何处理？",
+    "answer": "1、联系客户自取；\n2、若客户不同意自取，上报客服退回；\n3、已提供微派可服务区域信息给到各平台，待平台在下单环节进行管控（预计年后）。",
+    "type": "超范围",
+    "escalation": "联系各团队接口同事"
+  },
+  {
+    "question": "人工审核错误怎么办",
+    "answer": "[object Object]",
+    "type": "人工审核",
+    "escalation": ""
+  },
+  {
+    "question": "人工审核哪些场景？审核需要多久？",
+    "answer": "[object Object]",
+    "type": "无法补录",
+    "escalation": ""
+  },
+  {
+    "question": "快件显示“审核中”，无法补录怎么办",
+    "answer": "此种场景为AI校验不通过流入人工审核，人工还未完成审核导致无法补录，待客服完成审核即可补录",
+    "type": "审核中无法补录",
+    "escalation": ""
+  },
+  {
+    "question": "部分笔记本背面无SN码怎么拍（如机械革命笔记本）",
+    "answer": "[object Object]",
+    "type": "笔记本背面无SN码",
+    "escalation": "联系各团队接口同事，非欧瑞特客户件，则通过SISP-理赔详情查询客户经理，联系客户经理处理"
+  },
+  {
+    "question": "努比亚（小牛）手机部分型号手机盒SN码与IMEI码不在一个面上，怎么拍？",
+    "answer": "两个码都需要拍，拍2张照片上传（已反馈客户优化手机盒SN码粘贴位置）",
+    "type": "手机盒无SN码",
+    "escalation": "张思宇42493370"
+  },
+  {
+    "question": "哪些品牌、类目的国补件无法跳过校验？",
+    "answer": "电脑所有品类、小米商城件、OPPO商城件、荣耀商城件、华为商城件",
+    "type": "哪些无法跳过校验",
+    "escalation": ""
+  }
+]

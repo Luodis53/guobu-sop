@@ -1,103 +1,300 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
 <title>国补操作指引</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,"Helvetica Neue","Microsoft YaHei",sans-serif;background:#f2f4f8;color:#222;font-size:15px;line-height:1.6;-webkit-text-size-adjust:100%}
-.hd{background:linear-gradient(135deg,#1a73e8,#0d47a1);color:#fff;padding:18px 16px 14px;text-align:center;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,.15)}
-.hd h1{font-size:20px;font-weight:700;margin-bottom:4px}
-.hd p{font-size:12px;opacity:.85}
-.nav{display:flex;gap:6px;overflow-x:auto;padding:10px 12px;background:#fff;border-bottom:1px solid #e0e0e0;-webkit-overflow-scrolling:touch}
-.nav::-webkit-scrollbar{display:none}
-.tab{flex-shrink:0;padding:8px 14px;border:none;background:#f0f4ff;color:#555;border-radius:20px;font-size:13px;cursor:pointer;white-space:nowrap;transition:all .2s}
-.tab:active{transform:scale(.95)}
-.tab.on{background:#1a73e8;color:#fff;font-weight:600;box-shadow:0 1px 3px rgba(26,115,232,.3)}
-.ct{max-width:800px;margin:0 auto;padding:12px}
-.panel{display:none}.panel.on{display:block}
-.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
-.card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08)}
-.card img{width:100%;height:auto;display:block;cursor:pointer;min-height:80px;background:#eee}
-.cap{padding:6px 10px;font-size:12px;color:#888;text-align:center;border-top:1px solid #f0f0f0}
-table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:16px}
-tr{border-bottom:1px solid #eee}
+body{font-family:-apple-system,"Helvetica Neue","Microsoft YaHei",sans-serif;background:#f5f7fb;color:#1f2937;font-size:15px;line-height:1.6;-webkit-text-size-adjust:100%}
+.hd{background:linear-gradient(135deg,#2563eb,#1e40af);color:#fff;padding:22px 16px 18px;text-align:center;position:sticky;top:0;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.hd h1{font-size:24px;font-weight:700;margin-bottom:4px;letter-spacing:.5px}
+.hd p{font-size:13px;opacity:.9;margin-top:4px}
+
+.main-nav{display:flex;background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:64px;z-index:49;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.main-tab{flex:1;padding:14px 4px;border:none;background:#fff;color:#4b5563;font-size:14px;cursor:pointer;text-align:center;font-weight:600;transition:all .2s;border-bottom:3px solid transparent}
+.main-tab.on{color:#2563eb;border-bottom-color:#2563eb;background:#eff6ff}
+.main-tab:active{background:#dbeafe}
+
+.sub-nav{display:flex;gap:8px;overflow-x:auto;padding:12px 12px;background:#fff;border-bottom:1px solid #f0f0f0;-webkit-overflow-scrolling:touch}
+.sub-nav::-webkit-scrollbar{display:none}
+.sub-tab{flex-shrink:0;padding:8px 16px;border:none;background:#f3f4f6;color:#4b5563;border-radius:20px;font-size:13px;cursor:pointer;white-space:nowrap;transition:all .2s}
+.sub-tab.on{background:#2563eb;color:#fff;font-weight:600}
+
+.panel{display:none}
+.panel.on{display:block}
+
+.ct{max-width:900px;margin:0 auto;padding:14px}
+
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.card img{width:100%;height:auto;display:block;cursor:pointer;min-height:80px;background:#f3f4f6}
+.cap{padding:8px 10px;font-size:12px;color:#6b7280;text-align:center;border-top:1px solid #f3f4f6}
+
+.full-shot{width:100%;height:auto;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08);cursor:pointer;margin-bottom:16px}
+
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:16px}
+tr{border-bottom:1px solid #f3f4f6}
 tr:last-child{border-bottom:none}
-th{background:#eaf0fe;color:#1a73e8;font-weight:700;padding:12px 10px;font-size:14px;text-align:left}
-td{padding:10px;font-size:13px;vertical-align:top}
-td.sec{background:#f5f8ff;color:#333;font-weight:700;font-size:14px}
-td.num{color:#666;font-weight:600;text-align:center;width:30px}
+th{background:#eff6ff;color:#2563eb;font-weight:700;padding:12px 10px;font-size:14px;text-align:left}
+td{padding:10px;font-size:13px;vertical-align:top;color:#374151}
+td.sec{background:#f9fafb;color:#1f2937;font-weight:700;font-size:14px}
+.empty{text-align:center;padding:48px 20px;color:#9ca3af;font-size:14px}
+
+.search-box{width:100%;padding:14px 16px;border:1px solid #e5e7eb;border-radius:12px;font-size:15px;margin-bottom:16px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.search-box:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.qa-cats{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.qa-cat{padding:6px 14px;border-radius:20px;background:#fff;border:1px solid #e5e7eb;font-size:13px;cursor:pointer;color:#4b5563}
+.qa-cat.on{background:#2563eb;color:#fff;border-color:#2563eb}
+.qa-item{background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.qa-q{font-size:16px;font-weight:700;color:#2563eb;margin-bottom:10px}
+.qa-a{font-size:14px;color:#4b5563;line-height:1.9}
+.qa-tag{display:inline-block;font-size:11px;color:#6b7280;background:#f3f4f6;padding:3px 10px;border-radius:10px;margin-top:10px}
+.qa-empty{text-align:center;padding:48px 20px;color:#6b7280;font-size:15px}
+
+.sn-cats{display:flex;gap:10px;margin-bottom:16px}
+.sn-cat{flex:1;padding:14px 8px;border-radius:12px;background:#fff;border:1px solid #e5e7eb;text-align:center;font-size:15px;font-weight:700;cursor:pointer;transition:all .2s;color:#4b5563}
+.sn-cat.on{background:#2563eb;color:#fff;border-color:#2563eb}
+.sn-brands{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.sn-brand{padding:8px 14px;border-radius:20px;background:#fff;border:1px solid #e5e7eb;font-size:13px;cursor:pointer;transition:all .2s;color:#4b5563}
+.sn-brand.on{background:#2563eb;color:#fff;border-color:#2563eb}
+.sn-content{background:#fff;border-radius:12px;padding:18px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.sn-brand-title{font-size:18px;font-weight:700;color:#2563eb;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #f3f4f6}
+.sn-step{font-size:15px;color:#374151;line-height:2.2;white-space:pre-line}
+
 .zm{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);z-index:100;justify-content:center;align-items:center}
 .zm.show{display:flex}
 .zm img{max-width:96vw;max-height:90vh;object-fit:contain;border-radius:6px}
 .zm-x{position:absolute;top:12px;right:16px;color:#fff;font-size:32px;cursor:pointer}
-.empty{text-align:center;padding:40px 20px;color:#999;font-size:14px}
-.tip{background:#fff8e1;border-left:3px solid #ff9800;border-radius:4px;padding:10px 14px;font-size:13px;color:#e65100;margin-bottom:14px}
-.tip b{color:#f57c00}
-.full-sheet{width:100%;height:auto;display:block;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.1);cursor:zoom-in;margin-bottom:16px}
-@media(max-width:480px){.gallery{grid-template-columns:1fr}.hd h1{font-size:18px}td,th{padding:8px 6px;font-size:12px}
-table{font-size:12px}}
-</style></head><body>
+
+@media(max-width:480px){.gallery{grid-template-columns:1fr}.hd h1{font-size:20px}td,th{padding:8px 6px;font-size:12px}.main-tab{font-size:13px;padding:14px 2px}}
+</style>
+</head>
+<body>
 <div class="hd">
-<h1>国补操作指引</h1>
-<p>共9个模块 | 37张示例图</p>
+  <h1>国补操作指引</h1>
+  <p>快递小哥拍照补录操作指南</p>
 </div>
-<div class="nav" id="nav"></div>
-<div class="ct" id="ct"></div>
+
+<div class="main-nav">
+  <button class="main-tab on" data-tab="photo" onclick="goMain('photo')">正确拍照示例</button>
+  <button class="main-tab" data-tab="qa" onclick="goMain('qa')">常见问题</button>
+  <button class="main-tab" data-tab="sn" onclick="goMain('sn')">SN码调出指引</button>
+</div>
+
+<div class="ct">
+  <div id="photo-panel" class="panel on">
+    <div class="sub-nav" id="photo-subnav"></div>
+    <div id="photo-content"></div>
+  </div>
+
+  <div id="qa-panel" class="panel">
+    <input type="text" class="search-box" id="qa-search" placeholder="输入关键词搜索问题..." oninput="searchQA()">
+    <div class="qa-cats" id="qa-cats"></div>
+    <div id="qa-content"></div>
+  </div>
+
+  <div id="sn-panel" class="panel">
+    <div class="sn-cats" id="sn-cats"></div>
+    <div class="sn-brands" id="sn-brands"></div>
+    <div id="sn-content"></div>
+  </div>
+</div>
+
 <div class="zm" id="zm" onclick="closeZm()"><span class="zm-x">&times;</span><img id="zi" src="" alt=""></div>
+
 <script>
-var IM={"0":"images/img_0.jpg","1":"images/img_1.jpg","2":"images/img_2.jpg","3":"images/img_3.jpg","4":"images/img_4.jpg","5":"images/img_5.jpg","6":"images/img_6.jpg","7":"images/img_7.jpg","8":"images/img_8.jpg","9":"images/img_9.jpg","10":"images/img_10.jpg","11":"images/img_11.jpg","12":"images/img_12.jpg","13":"images/img_13.jpg","14":"images/img_14.jpg","15":"images/img_15.jpg","16":"images/img_16.jpg","17":"images/img_17.jpg","18":"images/img_18.jpg","19":"images/img_19.jpg","20":"images/img_20.jpg","21":"images/img_21.jpg","22":"images/img_22.jpg","23":"images/img_23.jpg","24":"images/img_24.jpg","25":"images/img_25.jpg","26":"images/img_26.jpg","27":"images/img_27.jpg","28":"images/img_28.jpg","29":"images/img_29.jpg","30":"images/img_30.jpg","31":"images/img_31.jpg","32":"images/img_32.jpg","33":"images/img_33.jpg","34":"images/img_34.jpg","35":"images/img_35.jpg","36":"images/img_36.jpg"};
-var AS=[{"name":"四角齐全","id":1,"rows":[],"maxCol":1,"mergedCells":[],"imageIds":[0,11,22,31,32]},{"name":"能良苹果5张","id":2,"rows":[],"maxCol":1,"mergedCells":[],"imageIds":[33,34,35,36,1,4,5,6,8,9]},{"name":"佳明穿戴&苹果17AIR","id":3,"rows":[{"rowNum":2,"cells":[{"col":1,"text":""},{"col":2,"text":"国补--知识同步\n"},{"col":3,"text":"国补--知识同步\n"},{"col":4,"text":"国补--知识同步\n"},{"col":5,"text":"国补--知识同步\n"},{"col":6,"text":""},{"col":7,"text":""},{"col":8,"text":""},{"col":9,"text":""},{"col":10,"text":""},{"col":11,"text":""},{"col":12,"text":""},{"col":13,"text":""},{"col":14,"text":""},{"col":15,"text":""},{"col":16,"text":""},{"col":17,"text":""},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]},{"rowNum":3,"cells":[{"col":1,"text":""},{"col":2,"text":"国补--知识同步\n"},{"col":3,"text":"国补--知识同步\n"},{"col":4,"text":"国补--知识同步\n"},{"col":5,"text":"国补--知识同步\n"},{"col":6,"text":""},{"col":7,"text":""},{"col":8,"text":""},{"col":9,"text":""},{"col":10,"text":""},{"col":11,"text":""},{"col":12,"text":""},{"col":13,"text":""},{"col":14,"text":""},{"col":15,"text":""},{"col":16,"text":""},{"col":17,"text":""},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]}],"maxCol":30,"mergedCells":["F3:J3","B2:E3"],"imageIds":[13]},{"name":"相机SN码","id":7,"rows":[{"rowNum":1,"cells":[{"col":1,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":2,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":3,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":4,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":5,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":6,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":7,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":8,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":9,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":10,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":11,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":12,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":13,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":14,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":15,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":16,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":17,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]},{"rowNum":3,"cells":[{"col":1,"text":"示例"},{"col":2,"text":""},{"col":3,"text":""},{"col":4,"text":""},{"col":5,"text":""},{"col":6,"text":""},{"col":7,"text":""},{"col":8,"text":""},{"col":9,"text":""},{"col":10,"text":""},{"col":11,"text":""},{"col":12,"text":""},{"col":13,"text":""},{"col":14,"text":""},{"col":15,"text":""},{"col":16,"text":""},{"col":17,"text":""},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]}],"maxCol":30,"mergedCells":["A1:Q1"],"imageIds":[14,15,16,17,18,19]},{"name":"相机镜头","id":9,"rows":[],"maxCol":1,"mergedCells":[],"imageIds":[20]},{"name":"游戏机","id":11,"rows":[],"maxCol":1,"mergedCells":[],"imageIds":[21]},{"name":"苹果MINI小电脑","id":10,"rows":[],"maxCol":1,"mergedCells":[],"imageIds":[23]},{"name":"手表SN合照","id":8,"rows":[{"rowNum":1,"cells":[{"col":1,"text":"小天才"},{"col":2,"text":""},{"col":3,"text":""},{"col":4,"text":""},{"col":5,"text":""},{"col":6,"text":""},{"col":7,"text":""},{"col":8,"text":""},{"col":9,"text":""},{"col":10,"text":""},{"col":11,"text":""},{"col":12,"text":""},{"col":13,"text":""},{"col":14,"text":""},{"col":15,"text":""},{"col":16,"text":""},{"col":17,"text":""},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]}],"maxCol":30,"mergedCells":[],"imageIds":[24,25,26,27]},{"name":"派件操作SOP","id":4,"rows":[{"rowNum":28,"cells":[{"col":1,"text":"三、派件操作关注点"},{"col":2,"text":"三、派件操作关注点"},{"col":3,"text":"三、派件操作关注点"},{"col":4,"text":"三、派件操作关注点"},{"col":5,"text":"三、派件操作关注点"},{"col":6,"text":"三、派件操作关注点"},{"col":7,"text":"三、派件操作关注点"},{"col":8,"text":"三、派件操作关注点"},{"col":9,"text":"三、派件操作关注点"},{"col":10,"text":"三、派件操作关注点"},{"col":11,"text":"三、派件操作关注点"},{"col":12,"text":"三、派件操作关注点"},{"col":13,"text":"三、派件操作关注点"},{"col":14,"text":"三、派件操作关注点"},{"col":15,"text":"三、派件操作关注点"},{"col":16,"text":"三、派件操作关注点"},{"col":17,"text":"三、派件操作关注点"},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]},{"rowNum":29,"cells":[{"col":1,"text":"1、派件关注点"},{"col":2,"text":""},{"col":3,"text":""},{"col":4,"text":""},{"col":5,"text":""},{"col":6,"text":""},{"col":7,"text":""},{"col":8,"text":""},{"col":9,"text":""},{"col":10,"text":""},{"col":11,"text":""},{"col":12,"text":""},{"col":13,"text":""},{"col":14,"text":""},{"col":15,"text":""},{"col":16,"text":""},{"col":17,"text":""},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]},{"rowNum":36,"cells":[{"col":1,"text":"2、常见异常场景处理"},{"col":2,"text":""},{"col":3,"text":""},{"col":4,"text":""},{"col":5,"text":""},{"col":6,"text":""},{"col":7,"text":""},{"col":8,"text":""},{"col":9,"text":""},{"col":10,"text":""},{"col":11,"text":""},{"col":12,"text":""},{"col":13,"text":""},{"col":14,"text":""},{"col":15,"text":""},{"col":16,"text":""},{"col":17,"text":""},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]},{"rowNum":37,"cells":[{"col":1,"text":"序号"},{"col":2,"text":"异常场景"},{"col":3,"text":"异常场景"},{"col":4,"text":"异常场景"},{"col":5,"text":"异常场景"},{"col":6,"text":"应对举措"},{"col":7,"text":"应对举措"},{"col":8,"text":"应对举措"},{"col":9,"text":"应对举措"},{"col":10,"text":"应对举措"},{"col":11,"text":"应对举措"},{"col":12,"text":"应对举措"},{"col":13,"text":"应对举措"},{"col":14,"text":"应对举措"},{"col":15,"text":"应对举措"},{"col":16,"text":"应对举措"},{"col":17,"text":"应对举措"},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]},{"rowNum":38,"cells":[{"col":1,"text":"1"},{"col":2,"text":"客户无法联系、空号、改派等"},{"col":3,"text":"客户无法联系、空号、改派等"},{"col":4,"text":"客户无法联系、空号、改派等"},{"col":5,"text":"客户无法联系、空号、改派等"},{"col":6,"text":"正常按大网件场景标记滞留"},{"col":7,"text":"正常按大网件场景标记滞留"},{"col":8,"text":"正常按大网件场景标记滞留"},{"col":9,"text":"正常按大网件场景标记滞留"},{"col":10,"text":"正常按大网件场景标记滞留"},{"col":11,"text":"正常按大网件场景标记滞留"},{"col":12,"text":"正常按大网件场景标记滞留"},{"col":13,"text":"正常按大网件场景标记滞留"},{"col":14,"text":"正常按大网件场景标记滞留"},{"col":15,"text":"正常按大网件场景标记滞留"},{"col":16,"text":"正常按大网件场景标记滞留"},{"col":17,"text":"正常按大网件场景标记滞留"},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]},{"rowNum":39,"cells":[{"col":1,"text":"2"},{"col":2,"text":"客户不配合开箱激活拍照"},{"col":3,"text":"客户不配合开箱激活拍照"},{"col":4,"text":"客户不配合开箱激活拍照"},{"col":5,"text":"客户不配合开箱激活拍照"},{"col":6,"text":"按照拒收处理操作“82”，选择其他原因，带回营业店上报工单，等待客服处理"},{"col":7,"text":"按照拒收处理操作“82”，选择其他原因，带回营业店上报工单，等待客服处理"},{"col":8,"text":"按照拒收处理操作“82”，选择其他原因，带回营业店上报工单，等待客服处理"},{"col":9,"text":"按照拒收处理操作“82”，选择其他原因，带回营业店上报工单，等待客服处理"},{"col":10,"text":"按照拒收处理操作“82”，选择其他原因，带回营业店上报工单，等待客服处理"},{"col":11,"text":"按照拒收处理操作“82”，选择其他原因，带回营业店上报工单，等待客服处理"},{"col":12,"text":"按照拒收处理操作“82”，选择其他原因，带回营业店上报工单，等待客服处理"},{"col":13,"text":"按照拒收处理操作“82”，选择其他原因，带回营业店上报工单，等待客服处理"},{"col":14,"text":"按照拒收处理操作“82”，选择其他原因，带回营业店上报工单，等待客服处理"},{"col":15,"text":"按照拒收处理操作“82”，选择其他原因，带回营业店上报工单，等待客服处理"},{"col":16,"text":"按照拒收处理操作“82”，选择其他原因，带回营业店上报工单，等待客服处理"},{"col":17,"text":"按照拒收处理操作“82”，选择其他原因，带回营业店上报工单，等待客服处理"},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]},{"rowNum":40,"cells":[{"col":1,"text":"3"},{"col":2,"text":"一个运单关联多个微派任务"},{"col":3,"text":"一个运单关联多个微派任务"},{"col":4,"text":"一个运单关联多个微派任务"},{"col":5,"text":"一个运单关联多个微派任务"},{"col":6,"text":"正常按微派提示逐个完成任务，若无法执行，则按照拒收处理操作“82”，带回营业店上报工单，等待客服处理"},{"col":7,"text":"正常按微派提示逐个完成任务，若无法执行，则按照拒收处理操作“82”，带回营业店上报工单，等待客服处理"},{"col":8,"text":"正常按微派提示逐个完成任务，若无法执行，则按照拒收处理操作“82”，带回营业店上报工单，等待客服处理"},{"col":9,"text":"正常按微派提示逐个完成任务，若无法执行，则按照拒收处理操作“82”，带回营业店上报工单，等待客服处理"},{"col":10,"text":"正常按微派提示逐个完成任务，若无法执行，则按照拒收处理操作“82”，带回营业店上报工单，等待客服处理"},{"col":11,"text":"正常按微派提示逐个完成任务，若无法执行，则按照拒收处理操作“82”，带回营业店上报工单，等待客服处理"},{"col":12,"text":"正常按微派提示逐个完成任务，若无法执行，则按照拒收处理操作“82”，带回营业店上报工单，等待客服处理"},{"col":13,"text":"正常按微派提示逐个完成任务，若无法执行，则按照拒收处理操作“82”，带回营业店上报工单，等待客服处理"},{"col":14,"text":"正常按微派提示逐个完成任务，若无法执行，则按照拒收处理操作“82”，带回营业店上报工单，等待客服处理"},{"col":15,"text":"正常按微派提示逐个完成任务，若无法执行，则按照拒收处理操作“82”，带回营业店上报工单，等待客服处理"},{"col":16,"text":"正常按微派提示逐个完成任务，若无法执行，则按照拒收处理操作“82”，带回营业店上报工单，等待客服处理"},{"col":17,"text":"正常按微派提示逐个完成任务，若无法执行，则按照拒收处理操作“82”，带回营业店上报工单，等待客服处理"},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]},{"rowNum":41,"cells":[{"col":1,"text":"4"},{"col":2,"text":"微派审核多次未通过"},{"col":3,"text":"微派审核多次未通过"},{"col":4,"text":"微派审核多次未通过"},{"col":5,"text":"微派审核多次未通过"},{"col":6,"text":"3次图片审核不通过后，第4次可跳过，若第4次无法跳过，则按照拒收处理操作“82”，选择其他原因，在输入框中输入系统报错的原因"},{"col":7,"text":"3次图片审核不通过后，第4次可跳过，若第4次无法跳过，则按照拒收处理操作“82”，选择其他原因，在输入框中输入系统报错的原因"},{"col":8,"text":"3次图片审核不通过后，第4次可跳过，若第4次无法跳过，则按照拒收处理操作“82”，选择其他原因，在输入框中输入系统报错的原因"},{"col":9,"text":"3次图片审核不通过后，第4次可跳过，若第4次无法跳过，则按照拒收处理操作“82”，选择其他原因，在输入框中输入系统报错的原因"},{"col":10,"text":"3次图片审核不通过后，第4次可跳过，若第4次无法跳过，则按照拒收处理操作“82”，选择其他原因，在输入框中输入系统报错的原因"},{"col":11,"text":"3次图片审核不通过后，第4次可跳过，若第4次无法跳过，则按照拒收处理操作“82”，选择其他原因，在输入框中输入系统报错的原因"},{"col":12,"text":"3次图片审核不通过后，第4次可跳过，若第4次无法跳过，则按照拒收处理操作“82”，选择其他原因，在输入框中输入系统报错的原因"},{"col":13,"text":"3次图片审核不通过后，第4次可跳过，若第4次无法跳过，则按照拒收处理操作“82”，选择其他原因，在输入框中输入系统报错的原因"},{"col":14,"text":"3次图片审核不通过后，第4次可跳过，若第4次无法跳过，则按照拒收处理操作“82”，选择其他原因，在输入框中输入系统报错的原因"},{"col":15,"text":"3次图片审核不通过后，第4次可跳过，若第4次无法跳过，则按照拒收处理操作“82”，选择其他原因，在输入框中输入系统报错的原因"},{"col":16,"text":"3次图片审核不通过后，第4次可跳过，若第4次无法跳过，则按照拒收处理操作“82”，选择其他原因，在输入框中输入系统报错的原因"},{"col":17,"text":"3次图片审核不通过后，第4次可跳过，若第4次无法跳过，则按照拒收处理操作“82”，选择其他原因，在输入框中输入系统报错的原因"},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]},{"rowNum":42,"cells":[{"col":1,"text":"5"},{"col":2,"text":"超范围转寄"},{"col":3,"text":"超范围转寄"},{"col":4,"text":"超范围转寄"},{"col":5,"text":"超范围转寄"},{"col":6,"text":"目前系统已强控超范围转寄国补单，如有异常，按照拒收处理操作“82”，选择其他原因，在输入框中输入退回原因"},{"col":7,"text":"目前系统已强控超范围转寄国补单，如有异常，按照拒收处理操作“82”，选择其他原因，在输入框中输入退回原因"},{"col":8,"text":"目前系统已强控超范围转寄国补单，如有异常，按照拒收处理操作“82”，选择其他原因，在输入框中输入退回原因"},{"col":9,"text":"目前系统已强控超范围转寄国补单，如有异常，按照拒收处理操作“82”，选择其他原因，在输入框中输入退回原因"},{"col":10,"text":"目前系统已强控超范围转寄国补单，如有异常，按照拒收处理操作“82”，选择其他原因，在输入框中输入退回原因"},{"col":11,"text":"目前系统已强控超范围转寄国补单，如有异常，按照拒收处理操作“82”，选择其他原因，在输入框中输入退回原因"},{"col":12,"text":"目前系统已强控超范围转寄国补单，如有异常，按照拒收处理操作“82”，选择其他原因，在输入框中输入退回原因"},{"col":13,"text":"目前系统已强控超范围转寄国补单，如有异常，按照拒收处理操作“82”，选择其他原因，在输入框中输入退回原因"},{"col":14,"text":"目前系统已强控超范围转寄国补单，如有异常，按照拒收处理操作“82”，选择其他原因，在输入框中输入退回原因"},{"col":15,"text":"目前系统已强控超范围转寄国补单，如有异常，按照拒收处理操作“82”，选择其他原因，在输入框中输入退回原因"},{"col":16,"text":"目前系统已强控超范围转寄国补单，如有异常，按照拒收处理操作“82”，选择其他原因，在输入框中输入退回原因"},{"col":17,"text":"目前系统已强控超范围转寄国补单，如有异常，按照拒收处理操作“82”，选择其他原因，在输入框中输入退回原因"},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]},{"rowNum":43,"cells":[{"col":1,"text":"6"},{"col":2,"text":"照片不合格"},{"col":3,"text":"照片不合格"},{"col":4,"text":"照片不合格"},{"col":5,"text":"照片不合格"},{"col":6,"text":"若快件完成投递后，商家向政府申报补贴时反馈照片不合格，需要重拍，则客服会联系小哥引导小哥联系客户重新补拍（详见下方）"},{"col":7,"text":"若快件完成投递后，商家向政府申报补贴时反馈照片不合格，需要重拍，则客服会联系小哥引导小哥联系客户重新补拍（详见下方）"},{"col":8,"text":"若快件完成投递后，商家向政府申报补贴时反馈照片不合格，需要重拍，则客服会联系小哥引导小哥联系客户重新补拍（详见下方）"},{"col":9,"text":"若快件完成投递后，商家向政府申报补贴时反馈照片不合格，需要重拍，则客服会联系小哥引导小哥联系客户重新补拍（详见下方）"},{"col":10,"text":"若快件完成投递后，商家向政府申报补贴时反馈照片不合格，需要重拍，则客服会联系小哥引导小哥联系客户重新补拍（详见下方）"},{"col":11,"text":"若快件完成投递后，商家向政府申报补贴时反馈照片不合格，需要重拍，则客服会联系小哥引导小哥联系客户重新补拍（详见下方）"},{"col":12,"text":"若快件完成投递后，商家向政府申报补贴时反馈照片不合格，需要重拍，则客服会联系小哥引导小哥联系客户重新补拍（详见下方）"},{"col":13,"text":"若快件完成投递后，商家向政府申报补贴时反馈照片不合格，需要重拍，则客服会联系小哥引导小哥联系客户重新补拍（详见下方）"},{"col":14,"text":"若快件完成投递后，商家向政府申报补贴时反馈照片不合格，需要重拍，则客服会联系小哥引导小哥联系客户重新补拍（详见下方）"},{"col":15,"text":"若快件完成投递后，商家向政府申报补贴时反馈照片不合格，需要重拍，则客服会联系小哥引导小哥联系客户重新补拍（详见下方）"},{"col":16,"text":"若快件完成投递后，商家向政府申报补贴时反馈照片不合格，需要重拍，则客服会联系小哥引导小哥联系客户重新补拍（详见下方）"},{"col":17,"text":"若快件完成投递后，商家向政府申报补贴时反馈照片不合格，需要重拍，则客服会联系小哥引导小哥联系客户重新补拍（详见下方）"},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]},{"rowNum":44,"cells":[{"col":1,"text":"7"},{"col":2,"text":"未开箱：客户拒收"},{"col":3,"text":"未开箱：客户拒收"},{"col":4,"text":"未开箱：客户拒收"},{"col":5,"text":"未开箱：客户拒收"},{"col":6,"text":"未开箱且拒绝开箱：按照拒收处理“82”带回网点由仓管上报工单，等待系统下发退回指令；"},{"col":7,"text":"未开箱且拒绝开箱：按照拒收处理“82”带回网点由仓管上报工单，等待系统下发退回指令；"},{"col":8,"text":"未开箱且拒绝开箱：按照拒收处理“82”带回网点由仓管上报工单，等待系统下发退回指令；"},{"col":9,"text":"未开箱且拒绝开箱：按照拒收处理“82”带回网点由仓管上报工单，等待系统下发退回指令；"},{"col":10,"text":"未开箱且拒绝开箱：按照拒收处理“82”带回网点由仓管上报工单，等待系统下发退回指令；"},{"col":11,"text":"未开箱且拒绝开箱：按照拒收处理“82”带回网点由仓管上报工单，等待系统下发退回指令；"},{"col":12,"text":"未开箱且拒绝开箱：按照拒收处理“82”带回网点由仓管上报工单，等待系统下发退回指令；"},{"col":13,"text":"未开箱且拒绝开箱：按照拒收处理“82”带回网点由仓管上报工单，等待系统下发退回指令；"},{"col":14,"text":"未开箱且拒绝开箱：按照拒收处理“82”带回网点由仓管上报工单，等待系统下发退回指令；"},{"col":15,"text":"未开箱且拒绝开箱：按照拒收处理“82”带回网点由仓管上报工单，等待系统下发退回指令；"},{"col":16,"text":"未开箱且拒绝开箱：按照拒收处理“82”带回网点由仓管上报工单，等待系统下发退回指令；"},{"col":17,"text":"未开箱且拒绝开箱：按照拒收处理“82”带回网点由仓管上报工单，等待系统下发退回指令；"},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]},{"rowNum":45,"cells":[{"col":1,"text":"8"},{"col":2,"text":"已开箱：客户拒收"},{"col":3,"text":"已开箱：客户拒收"},{"col":4,"text":"已开箱：客户拒收"},{"col":5,"text":"已开箱：客户拒收"},{"col":6,"text":"已开箱：\n1、开箱且未开机，如何操作？\n2、开箱且开机，如何操作？\n方案：\n（1）大原则必须拆机+开机+拍照后才能交付机器\n（2）密封条/塑封未拆前，可以无理由拒收\n（3）密封条/塑封拆开/机器已开机，现场优先建议客户完成交付链路（拆机+开机+拍照+签字），然后引导客户联系平台客服申请货已收退货；"},{"col":7,"text":"已开箱：\n1、开箱且未开机，如何操作？\n2、开箱且开机，如何操作？\n方案：\n（1）大原则必须拆机+开机+拍照后才能交付机器\n（2）密封条/塑封未拆前，可以无理由拒收\n（3）密封条/塑封拆开/机器已开机，现场优先建议客户完成交付链路（拆机+开机+拍照+签字），然后引导客户联系平台客服申请货已收退货；"},{"col":8,"text":"已开箱：\n1、开箱且未开机，如何操作？\n2、开箱且开机，如何操作？\n方案：\n（1）大原则必须拆机+开机+拍照后才能交付机器\n（2）密封条/塑封未拆前，可以无理由拒收\n（3）密封条/塑封拆开/机器已开机，现场优先建议客户完成交付链路（拆机+开机+拍照+签字），然后引导客户联系平台客服申请货已收退货；"},{"col":9,"text":"已开箱：\n1、开箱且未开机，如何操作？\n2、开箱且开机，如何操作？\n方案：\n（1）大原则必须拆机+开机+拍照后才能交付机器\n（2）密封条/塑封未拆前，可以无理由拒收\n（3）密封条/塑封拆开/机器已开机，现场优先建议客户完成交付链路（拆机+开机+拍照+签字），然后引导客户联系平台客服申请货已收退货；"},{"col":10,"text":"已开箱：\n1、开箱且未开机，如何操作？\n2、开箱且开机，如何操作？\n方案：\n（1）大原则必须拆机+开机+拍照后才能交付机器\n（2）密封条/塑封未拆前，可以无理由拒收\n（3）密封条/塑封拆开/机器已开机，现场优先建议客户完成交付链路（拆机+开机+拍照+签字），然后引导客户联系平台客服申请货已收退货；"},{"col":11,"text":"已开箱：\n1、开箱且未开机，如何操作？\n2、开箱且开机，如何操作？\n方案：\n（1）大原则必须拆机+开机+拍照后才能交付机器\n（2）密封条/塑封未拆前，可以无理由拒收\n（3）密封条/塑封拆开/机器已开机，现场优先建议客户完成交付链路（拆机+开机+拍照+签字），然后引导客户联系平台客服申请货已收退货；"},{"col":12,"text":"已开箱：\n1、开箱且未开机，如何操作？\n2、开箱且开机，如何操作？\n方案：\n（1）大原则必须拆机+开机+拍照后才能交付机器\n（2）密封条/塑封未拆前，可以无理由拒收\n（3）密封条/塑封拆开/机器已开机，现场优先建议客户完成交付链路（拆机+开机+拍照+签字），然后引导客户联系平台客服申请货已收退货；"},{"col":13,"text":"已开箱：\n1、开箱且未开机，如何操作？\n2、开箱且开机，如何操作？\n方案：\n（1）大原则必须拆机+开机+拍照后才能交付机器\n（2）密封条/塑封未拆前，可以无理由拒收\n（3）密封条/塑封拆开/机器已开机，现场优先建议客户完成交付链路（拆机+开机+拍照+签字），然后引导客户联系平台客服申请货已收退货；"},{"col":14,"text":"已开箱：\n1、开箱且未开机，如何操作？\n2、开箱且开机，如何操作？\n方案：\n（1）大原则必须拆机+开机+拍照后才能交付机器\n（2）密封条/塑封未拆前，可以无理由拒收\n（3）密封条/塑封拆开/机器已开机，现场优先建议客户完成交付链路（拆机+开机+拍照+签字），然后引导客户联系平台客服申请货已收退货；"},{"col":15,"text":"已开箱：\n1、开箱且未开机，如何操作？\n2、开箱且开机，如何操作？\n方案：\n（1）大原则必须拆机+开机+拍照后才能交付机器\n（2）密封条/塑封未拆前，可以无理由拒收\n（3）密封条/塑封拆开/机器已开机，现场优先建议客户完成交付链路（拆机+开机+拍照+签字），然后引导客户联系平台客服申请货已收退货；"},{"col":16,"text":"已开箱：\n1、开箱且未开机，如何操作？\n2、开箱且开机，如何操作？\n方案：\n（1）大原则必须拆机+开机+拍照后才能交付机器\n（2）密封条/塑封未拆前，可以无理由拒收\n（3）密封条/塑封拆开/机器已开机，现场优先建议客户完成交付链路（拆机+开机+拍照+签字），然后引导客户联系平台客服申请货已收退货；"},{"col":17,"text":"已开箱：\n1、开箱且未开机，如何操作？\n2、开箱且开机，如何操作？\n方案：\n（1）大原则必须拆机+开机+拍照后才能交付机器\n（2）密封条/塑封未拆前，可以无理由拒收\n（3）密封条/塑封拆开/机器已开机，现场优先建议客户完成交付链路（拆机+开机+拍照+签字），然后引导客户联系平台客服申请货已收退货；"},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]}],"maxCol":30,"mergedCells":["A1:Q1","A28:Q28","B37:E37","F37:Q37","B38:E38","F38:Q38","B39:E39","F39:Q39","B40:E40","F40:Q40","B41:E41","F41:Q41","B42:E42","F42:Q42","B43:E43","F43:Q43","B44:E44","F44:Q44","B45:E45","F45:Q45"],"imageIds":[30]}];
-var nav=document.getElementById("nav"),ct=document.getElementById("ct");
-AS.forEach(function(s,i){
-  var t=document.createElement("button");
-  t.className="tab"+(i===0?" on":"");
-  t.textContent=s.name;
-  t.onclick=function(){go(i)};
-  nav.appendChild(t);
-});
-var p0=document.createElement("div");
-p0.className="panel on";
-p0.innerHTML="<img src=\"images/四角齐全.jpg\" style=\"width:100%;height:auto;display:block;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.1)\" onclick=\"zoom(this.src)\" alt=\"四角齐全\">";
-ct.appendChild(p0);
-var p1=document.createElement("div");
-p1.className="panel";
-p1.innerHTML="<img src=\"images/能良苹果5张.jpg\" style=\"width:100%;height:auto;display:block;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.1)\" onclick=\"zoom(this.src)\" alt=\"能良苹果5张\">";
-ct.appendChild(p1);
-var p2=document.createElement("div");
-p2.className="panel";
-p2.innerHTML="<img src=\"images/佳明穿戴&苹果17AIR.jpg\" style=\"width:100%;height:auto;display:block;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.1)\" onclick=\"zoom(this.src)\" alt=\"佳明穿戴&amp;苹果17AIR\"><table><tr><td class=\"sec\" colspan=\"4\">国补--知识同步<br></td></tr></table>";
-ct.appendChild(p2);
-var p3=document.createElement("div");
-p3.className="panel";
-p3.innerHTML="<div class=\"gallery\"><div class=\"card\" id=\"img3_0\"><img src=\"images/img_14.jpg\" onclick=\"zoom(this.src)\" alt=\"示例图\" loading=\"lazy\"><div class=\"cap\">示例 1</div></div><div class=\"card\" id=\"img3_1\"><img src=\"images/img_15.jpg\" onclick=\"zoom(this.src)\" alt=\"示例图\" loading=\"lazy\"><div class=\"cap\">示例 2</div></div><div class=\"card\" id=\"img3_2\"><img src=\"images/img_16.jpg\" onclick=\"zoom(this.src)\" alt=\"示例图\" loading=\"lazy\"><div class=\"cap\">示例 3</div></div><div class=\"card\" id=\"img3_3\"><img src=\"images/img_17.jpg\" onclick=\"zoom(this.src)\" alt=\"示例图\" loading=\"lazy\"><div class=\"cap\">示例 4</div></div><div class=\"card\" id=\"img3_4\"><img src=\"images/img_18.jpg\" onclick=\"zoom(this.src)\" alt=\"示例图\" loading=\"lazy\"><div class=\"cap\">示例 5</div></div><div class=\"card\" id=\"img3_5\"><img src=\"images/img_19.jpg\" onclick=\"zoom(this.src)\" alt=\"示例图\" loading=\"lazy\"><div class=\"cap\">示例 6</div></div></div><table><tr><td class=\"sec\" colspan=\"17\">相机SN码常见位置：电池仓或充电口处</td></tr><tr><td class=\"td\">示例</td></tr></table>";
-ct.appendChild(p3);
-var p4=document.createElement("div");
-p4.className="panel";
-p4.innerHTML="<div class=\"gallery\"><div class=\"card\" id=\"img4_0\"><img src=\"images/img_20.jpg\" onclick=\"zoom(this.src)\" alt=\"示例图\" loading=\"lazy\"><div class=\"cap\">示例 1</div></div></div>";
-ct.appendChild(p4);
-var p5=document.createElement("div");
-p5.className="panel";
-p5.innerHTML="<div class=\"gallery\"><div class=\"card\" id=\"img5_0\"><img src=\"images/img_21.jpg\" onclick=\"zoom(this.src)\" alt=\"示例图\" loading=\"lazy\"><div class=\"cap\">示例 1</div></div></div>";
-ct.appendChild(p5);
-var p6=document.createElement("div");
-p6.className="panel";
-p6.innerHTML="<div class=\"gallery\"><div class=\"card\" id=\"img6_0\"><img src=\"images/img_23.jpg\" onclick=\"zoom(this.src)\" alt=\"示例图\" loading=\"lazy\"><div class=\"cap\">示例 1</div></div></div>";
-ct.appendChild(p6);
-var p7=document.createElement("div");
-p7.className="panel";
-p7.innerHTML="<div class=\"gallery\"><div class=\"card\" id=\"img7_0\"><img src=\"images/img_24.jpg\" onclick=\"zoom(this.src)\" alt=\"示例图\" loading=\"lazy\"><div class=\"cap\">示例 1</div></div><div class=\"card\" id=\"img7_1\"><img src=\"images/img_25.jpg\" onclick=\"zoom(this.src)\" alt=\"示例图\" loading=\"lazy\"><div class=\"cap\">示例 2</div></div><div class=\"card\" id=\"img7_2\"><img src=\"images/img_26.jpg\" onclick=\"zoom(this.src)\" alt=\"示例图\" loading=\"lazy\"><div class=\"cap\">示例 3</div></div><div class=\"card\" id=\"img7_3\"><img src=\"images/img_27.jpg\" onclick=\"zoom(this.src)\" alt=\"示例图\" loading=\"lazy\"><div class=\"cap\">示例 4</div></div></div><table><tr><td class=\"td\">小天才</td></tr></table>";
-ct.appendChild(p7);
-var p8=document.createElement("div");
-p8.className="panel";
-p8.innerHTML="<div class=\"gallery\"><div class=\"card\" id=\"img8_0\"><img src=\"images/img_30.jpg\" onclick=\"zoom(this.src)\" alt=\"示例图\" loading=\"lazy\"><div class=\"cap\">示例 1</div></div></div><table><tr><td class=\"sec\" colspan=\"17\">三、派件操作关注点</td></tr><tr><td class=\"sec\">1、派件关注点</td></tr><tr><td class=\"sec\">2、常见异常场景处理</td></tr><tr><td class=\"td\">序号</td><td class=\"sec\" colspan=\"4\">异常场景</td><td class=\"sec\" colspan=\"12\">应对举措</td></tr><tr><td class=\"num\">1</td><td class=\"sec\" colspan=\"4\">客户无法联系、空号、改派等</td><td class=\"sec\" colspan=\"12\">正常按大网件场景标记滞留</td></tr><tr><td class=\"num\">2</td><td class=\"sec\" colspan=\"4\">客户不配合开箱激活拍照</td><td class=\"sec\" colspan=\"12\">按照拒收处理操作“82”，选择其他原因，带回营业店上报工单，等待客服处理</td></tr><tr><td class=\"num\">3</td><td class=\"sec\" colspan=\"4\">一个运单关联多个微派任务</td><td class=\"sec\" colspan=\"12\">正常按微派提示逐个完成任务，若无法执行，则按照拒收处理操作“82”，带回营业店上报工单，等待客服处理</td></tr><tr><td class=\"num\">4</td><td class=\"sec\" colspan=\"4\">微派审核多次未通过</td><td class=\"sec\" colspan=\"12\">3次图片审核不通过后，第4次可跳过，若第4次无法跳过，则按照拒收处理操作“82”，选择其他原因，在输入框中输入系统报错的原因</td></tr><tr><td class=\"num\">5</td><td class=\"sec\" colspan=\"4\">超范围转寄</td><td class=\"sec\" colspan=\"12\">目前系统已强控超范围转寄国补单，如有异常，按照拒收处理操作“82”，选择其他原因，在输入框中输入退回原因</td></tr><tr><td class=\"num\">6</td><td class=\"sec\" colspan=\"4\">照片不合格</td><td class=\"sec\" colspan=\"12\">若快件完成投递后，商家向政府申报补贴时反馈照片不合格，需要重拍，则客服会联系小哥引导小哥联系客户重新补拍（详见下方）</td></tr><tr><td class=\"num\">7</td><td class=\"sec\" colspan=\"4\">未开箱：客户拒收</td><td class=\"sec\" colspan=\"12\">未开箱且拒绝开箱：按照拒收处理“82”带回网点由仓管上报工单，等待系统下发退回指令；</td></tr><tr><td class=\"num\">8</td><td class=\"sec\" colspan=\"4\">已开箱：客户拒收</td><td class=\"sec\" colspan=\"12\">已开箱：<br>1、开箱且未开机，如何操作？<br>2、开箱且开机，如何操作？<br>方案：<br>（1）大原则必须拆机+开机+拍照后才能交付机器<br>（2）密封条/塑封未拆前，可以无理由拒收<br>（3）密封条/塑封拆开/机器已开机，现场优先建议客户完成交付链路（拆机+开机+拍照+签字），然后引导客户联系平台客服申请货已收退货；</td></tr></table>";
-ct.appendChild(p8);
-function go(i){
-  var ts=nav.querySelectorAll(".tab"),ps=ct.querySelectorAll(".panel");
-  for(var j=0;j<ts.length;j++){ts[j].classList.toggle("on",j===i);ps[j].classList.toggle("on",j===i)}
-  window.scrollTo({top:0,behavior:"smooth"})
+var photoData = [{"name":"四角齐全","rows":[],"maxCol":1,"mergedCells":[],"imageIds":[0,11,22,31,32]},{"name":"能良苹果5张","rows":[],"maxCol":1,"mergedCells":[],"imageIds":[33,34,35,36,1,4,5,6,8,9]},{"name":"佳明穿戴&苹果17AIR","rows":[{"rowNum":2,"cells":[{"col":1,"text":""},{"col":2,"text":"国补--知识同步\n"},{"col":3,"text":"国补--知识同步\n"},{"col":4,"text":"国补--知识同步\n"},{"col":5,"text":"国补--知识同步\n"},{"col":6,"text":""},{"col":7,"text":""},{"col":8,"text":""},{"col":9,"text":""},{"col":10,"text":""},{"col":11,"text":""},{"col":12,"text":""},{"col":13,"text":""},{"col":14,"text":""},{"col":15,"text":""},{"col":16,"text":""},{"col":17,"text":""},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]},{"rowNum":3,"cells":[{"col":1,"text":""},{"col":2,"text":"国补--知识同步\n"},{"col":3,"text":"国补--知识同步\n"},{"col":4,"text":"国补--知识同步\n"},{"col":5,"text":"国补--知识同步\n"},{"col":6,"text":""},{"col":7,"text":""},{"col":8,"text":""},{"col":9,"text":""},{"col":10,"text":""},{"col":11,"text":""},{"col":12,"text":""},{"col":13,"text":""},{"col":14,"text":""},{"col":15,"text":""},{"col":16,"text":""},{"col":17,"text":""},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]}],"maxCol":30,"mergedCells":["F3:J3","B2:E3"],"imageIds":[13]},{"name":"相机SN码","rows":[{"rowNum":1,"cells":[{"col":1,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":2,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":3,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":4,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":5,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":6,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":7,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":8,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":9,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":10,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":11,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":12,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":13,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":14,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":15,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":16,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":17,"text":"相机SN码常见位置：电池仓或充电口处"},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]},{"rowNum":3,"cells":[{"col":1,"text":"示例"},{"col":2,"text":""},{"col":3,"text":""},{"col":4,"text":""},{"col":5,"text":""},{"col":6,"text":""},{"col":7,"text":""},{"col":8,"text":""},{"col":9,"text":""},{"col":10,"text":""},{"col":11,"text":""},{"col":12,"text":""},{"col":13,"text":""},{"col":14,"text":""},{"col":15,"text":""},{"col":16,"text":""},{"col":17,"text":""},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]}],"maxCol":30,"mergedCells":["A1:Q1"],"imageIds":[14,15,16,17,18,19]},{"name":"相机镜头","rows":[],"maxCol":1,"mergedCells":[],"imageIds":[20]},{"name":"游戏机","rows":[],"maxCol":1,"mergedCells":[],"imageIds":[21]},{"name":"苹果MINI小电脑","rows":[],"maxCol":1,"mergedCells":[],"imageIds":[23]},{"name":"手表SN合照","rows":[{"rowNum":1,"cells":[{"col":1,"text":"小天才"},{"col":2,"text":""},{"col":3,"text":""},{"col":4,"text":""},{"col":5,"text":""},{"col":6,"text":""},{"col":7,"text":""},{"col":8,"text":""},{"col":9,"text":""},{"col":10,"text":""},{"col":11,"text":""},{"col":12,"text":""},{"col":13,"text":""},{"col":14,"text":""},{"col":15,"text":""},{"col":16,"text":""},{"col":17,"text":""},{"col":18,"text":""},{"col":19,"text":""},{"col":20,"text":""},{"col":21,"text":""},{"col":22,"text":""},{"col":23,"text":""},{"col":24,"text":""},{"col":25,"text":""},{"col":26,"text":""},{"col":27,"text":""},{"col":28,"text":""},{"col":29,"text":""},{"col":30,"text":""}]}],"maxCol":30,"mergedCells":[],"imageIds":[24,25,26,27]}];
+var qaData = [{"question":"菜鸟、拼多多虚拟号失效怎么处理","answer":"[object Object]","type":"异常处理","escalation":""},{"question":"SN码的其他名称有哪些？","answer":"SN码，中文名为序列号，也有其他名称，如【Serial Number】、【SERIAL  NO.】、【SN】、【S/N】，部分笔记本显示为【S/T】","type":"小技巧","escalation":""},{"question":"[object Object]","answer":"[object Object]","type":"异常处理","escalation":"滞留标记原因，将快件带回网点，联系各团队接口同事"},{"question":"多次拍照审核不通过","answer":"[object Object]","type":"异常处理","escalation":"杨小平（01369310）"},{"question":"国补件是否可转寄退回","answer":"[object Object]","type":"异常处理","escalation":"联系各团队接口同事"},{"question":"同城小哥怎么补录？","answer":"[object Object]","type":"异常处理","escalation":""},{"question":"号码不对无法妥投","answer":"直接拨打10秒钟就能解除电联管控限制","type":"号码不对","escalation":""},{"question":"同城小哥补录任务时，没有路径","answer":"可线下收集正确的图片给到各品牌专项客服进行后台人工补录","type":"补录","escalation":""},{"question":"需更换其他小哥去补录照片怎么办","answer":"[object Object]","type":"补录","escalation":""},{"question":"AI审核反馈不清晰","answer":"[object Object]","type":"异常处理","escalation":""},{"question":"2合1照片拍摄技巧","answer":"[object Object]","type":"异常处理","escalation":""},{"question":"收方号码不对无法妥投怎么办","answer":"强制拨打10秒解除电联管控，不管有没有拨通","type":"异常处理","escalation":""},{"question":"彩盒丢了怎么办","answer":"务必优先找回，若无法找回可能有理赔风险；实在无法找回的，需留存举证材料（电话沟通录音、客户书面说明等），反馈给专项客服留档，地区也需自行留档","type":"异常处理","escalation":""},{"question":"怎么查看手机、平板的SN码/IMEI码？","answer":"详见本文档附表《各品牌SN码调出指引》","type":"系统类","escalation":"各团队接口同事、周运丹、黄洪涛、程英渊、叶灵"},{"question":"如何识别哪个平台的国补订单","answer":"详见本文档附表《国补订单识别》","type":"系统类","escalation":"各团队接口同事、周运丹、黄洪涛、程英渊、叶灵"},{"question":"系统里怎么看SN码是否正确？怎么查SN\\IMEI码？","answer":"[object Object]","type":"系统类","escalation":""},{"question":"AI校验哪些图片","answer":"[object Object]","type":"系统类","escalation":""},{"question":"怎么监控T-1数据","answer":"（仅适用地区同事申请）\nT-1监控报表：丰景台-客户国补订单运单明细报表_地区","type":"系统类","escalation":""},{"question":"快件已退回的国补任务如何处理？","answer":"[object Object]","type":"退回件","escalation":""},{"question":"没有国补任务的怎么处理？","answer":"有国补标识，但无微派任务，按普通件派送即可","type":"无微派任务","escalation":""},{"question":"微派计提怎么兑现？","answer":"1、顺丰小哥：在任务完成后，7天内可以在微应用【一线计提查询】-增值服务计提查看，计提随工资月发放\n2、同城：任务完成后，次日发放到骑士账户，具体路径：骑士APP-今日收入-今日明细，T+3支持体现","type":"计提","escalation":""},{"question":"超范围快件如何处理？","answer":"1、联系客户自取；\n2、若客户不同意自取，上报客服退回；\n3、已提供微派可服务区域信息给到各平台，待平台在下单环节进行管控（预计年后）。","type":"超范围","escalation":"联系各团队接口同事"},{"question":"人工审核错误怎么办","answer":"[object Object]","type":"人工审核","escalation":""},{"question":"人工审核哪些场景？审核需要多久？","answer":"[object Object]","type":"无法补录","escalation":""},{"question":"快件显示“审核中”，无法补录怎么办","answer":"此种场景为AI校验不通过流入人工审核，人工还未完成审核导致无法补录，待客服完成审核即可补录","type":"审核中无法补录","escalation":""},{"question":"部分笔记本背面无SN码怎么拍（如机械革命笔记本）","answer":"[object Object]","type":"笔记本背面无SN码","escalation":"联系各团队接口同事，非欧瑞特客户件，则通过SISP-理赔详情查询客户经理，联系客户经理处理"},{"question":"努比亚（小牛）手机部分型号手机盒SN码与IMEI码不在一个面上，怎么拍？","answer":"两个码都需要拍，拍2张照片上传（已反馈客户优化手机盒SN码粘贴位置）","type":"手机盒无SN码","escalation":"张思宇42493370"},{"question":"哪些品牌、类目的国补件无法跳过校验？","answer":"电脑所有品类、小米商城件、OPPO商城件、荣耀商城件、华为商城件","type":"哪些无法跳过校验","escalation":""}];
+var snData = {"手机":{"华为":"拨号界面输入*#06#","苹果":"进入界面点设置—通用—关于本机","荣耀":"拨号界面输入*#06#","OPPO/一加":"开机> 跳过选择需要，设置密码等步骤>进去桌面找到“设置“--> 关于本机--> 状态信息-->序列号、IMEI","VIVO":"拨号界面输入*#06#","联想":"拨号界面输入*#06#","小米/Redmi":"第一步： 拨号界面输入 *#*#6484#*#*、第二步： 点击”版本信息测试”","三星":"第一步：点击“设置”\n第二步：点击“关于手机","中兴":"开机- 跳过选择需要，设置密码等步骤>进去桌面找到“设置“--> 关于本机-型号-序列号（SN码）\n\n开机- 跳过选择需要，设置密码等步骤>进去桌面找到“设置“--> 关于本机-型号-序列号（SN码）","魅族":"魅族品牌手机sn查询路径：\n\n1、开机-手机解锁进入桌面→设置→我的手机→下翻可完整显示sn、imei1、imei2信息","nubia/努比亚":"开机- 跳过选择需要，设置密码等步骤>进去桌面找到“设置“--> 关于本机-型号-序列号（SN码）\n\n开机- 跳过选择需要，设置密码等步骤>进去桌面找到“设置“--> 关于本机-型号-序列号（SN码）","Motorola/摩托罗拉":"拨号界面输入*#06#","VIVO：IQOO":"拨号界面输入*#06#"},"智能穿戴":{"华为":"开机状态--第一步：按“手表”右侧、第二步：点击“设置”、第三步：点击关于、第四步：找到序列号","苹果":"开机状态--第一步：按“手表”右侧、第二步：点击“设置”、第三步：点击关于、第四步：找到序列号","荣耀":"开机状态:按手表右侧键---设置---关于---序列号","OPPO/一加":"按手表右侧键 >右滑选择中文 >下滑点击同意 >扫描二维码下载app >打开app注册账号 >蓝牙配对 >下拉找到设置 > 其他设置  > 关于手表 > 状态信息中查看序列号","VIVO、iQOO":"开机后点击手表名称旁的感叹号-出现二维码后连续点击10次进入表盘-按表冠-设置-关于手表-下滑找到序列号","小米/Redmi":"1、手表:设备开机--选择中文--跳过APP下载--关于--序列号\n2、手环：必须连电--选择中文--跳过APP下载--关于--序列号","三星":"三星智能手表激活流程如下：\n1.开机，选择语言、连接Wi-Fi等基本信息。\n2.下载并安装应用：在安卓手机上下载并安装Samsung Wearable（或Samsung Gear）应用。\n3.手表与手机配对：打开手机上的Samsung Wearable应用，点击“添加新设备”，选择“Gear”设备类型，根据提示将手表与手机进行蓝牙连接。\n4.完成激活与设置：在Gear应用中，点击已连接的手表设备，进入设备设置页面，根据提示完成设备的激活过程。5.进入设置-关于手表，呈现出设备SN相关信息页面。","小天才":"1、长按侧边开机键\n2、屏幕左滑，找到并点击设置按钮\n3、找到并点击“我的设备”\n4、上划屏幕找到并点击“本机信息”\n5、上划屏幕找到序列号","Amazfit":"1、长按侧边开机键\n2、选择“简体中文”\n3、接打勾，无需下载\n4、向上滑动，无需扫码\n5、点击“关于”，屏幕向上划找到SN码","Garmin/佳明":"无需SN码","小寻":"按开机键--点击同意-- 一直点下一步（无需联网）--找到设置--关于手表--设备信息--中间编码即为序列号"}};
+var sheetScreens = {"四角齐全":"images/四角齐全.jpg","能良苹果5张":"images/能良苹果5张.jpg","佳明穿戴&苹果17AIR":"images/佳明穿戴&苹果17AIR.jpg"};
+var currentSub = 0;
+var qaFilter = 'all';
+var snCategory = '手机';
+var snBrand = null;
+
+function colLetterToNum(l){let n=0;for(let i=0;i<l.length;i++)n=n*26+(l.charCodeAt(i)-64);return n}
+function isCovered(merged,row,col){for(let i=0;i<merged.length;i++){const m=merged[i].match(/^([A-Z]+)(d+):([A-Z]+)(d+)$/);if(!m)continue;const c1=colLetterToNum(m[1]),r1=+m[2],c2=colLetterToNum(m[3]),r2=+m[4];if(row>=r1&&row<=r2&&col>=c1&&col<=c2)return!(col===c1&&row===r1)}return false}
+function getSpan(merged,row,col){for(let i=0;i<merged.length;i++){const m=merged[i].match(/^([A-Z]+)(d+):([A-Z]+)(d+)$/);if(!m)continue;const c1=colLetterToNum(m[1]),r1=+m[2],c2=colLetterToNum(m[3]),r2=+m[4];if(row===r1&&col===c1)return{colspan:c2-c1+1}}return null}
+function fmt(t){return t?t.replace(/
+/g,'<br>'):''}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+
+function goMain(tab){
+  document.querySelectorAll('.main-tab').forEach(t => t.classList.toggle('on', t.dataset.tab === tab));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('on', false));
+  document.getElementById(tab + '-panel').classList.add('on');
+  if (tab === 'photo' && !document.getElementById('photo-subnav').innerHTML) buildPhoto();
+  if (tab === 'qa' && !document.getElementById('qa-content').innerHTML) buildQA();
+  if (tab === 'sn' && !document.getElementById('sn-content').innerHTML) buildSN();
+  window.scrollTo({top:0,behavior:'smooth'});
 }
-function zoom(s){document.getElementById("zi").src=s;document.getElementById("zm").classList.add("show")}
-function closeZm(){document.getElementById("zm").classList.remove("show")}
-document.addEventListener("keydown",function(e){if(e.key==="Escape")closeZm()})
-</script></body></html>
+
+function buildPhoto(){
+  const nav = document.getElementById('photo-subnav');
+  const ct = document.getElementById('photo-content');
+  nav.innerHTML = '';
+  ct.innerHTML = '';
+
+  photoData.forEach((s, i) => {
+    const t = document.createElement('button');
+    t.className = 'sub-tab' + (i === 0 ? ' on' : '');
+    t.textContent = s.name;
+    t.onclick = function(){goPhoto(i)};
+    nav.appendChild(t);
+  });
+
+  photoData.forEach((s, i) => {
+    const panel = document.createElement('div');
+    panel.className = 'sub-panel';
+    panel.id = 'photo-' + i;
+    panel.style.display = i === 0 ? 'block' : 'none';
+
+    let html = '';
+
+    // Full-page screenshot for first 3 sheets
+    if (sheetScreens[s.name]) {
+      html += '<img src="' + sheetScreens[s.name] + '" class="full-shot" onclick="zoom(this.src)" alt="' + esc(s.name) + '">';
+    }
+
+    // Image gallery for extracted images
+    if (s.imageIds && s.imageIds.length > 0 && !sheetScreens[s.name]) {
+      html += '<div class="gallery">';
+      s.imageIds.forEach(function(imgId, j){
+        html += '<div class="card"><img src="images/img_' + imgId + '.jpg" onclick="zoom(this.src)" alt="示例" loading="lazy"><div class="cap">示例 ' + (j + 1) + '</div></div>';
+      });
+      html += '</div>';
+    }
+
+    // Tables
+    if (s.rows && s.rows.length > 0) {
+      html += '<table>';
+      s.rows.forEach(function(row){
+        let hasContent = false;
+        let rowHTML = '';
+        for (let c = 1; c <= s.maxCol; c++) {
+          if (isCovered(s.mergedCells, row.rowNum, c)) continue;
+          const cell = row.cells.find(function(x){return x.col === c});
+          const text = cell ? cell.text : '';
+          if (!text.trim()) continue;
+          const sp = getSpan(s.mergedCells, row.rowNum, c);
+          hasContent = true;
+          const colCount = row.cells.filter(function(x){return x.text.trim() === text.trim()}).length;
+          let cls = 'td';
+          if (colCount >= 4 || text.match(/^[一二三四五六七八九]+[、.]/)) cls = 'sec';
+          rowHTML += '<td class="' + cls + '"' + (sp ? ' colspan="' + sp.colspan + '"' : '') + '>' + fmt(text) + '</td>';
+        }
+        if (hasContent) html += '<tr>' + rowHTML + '</tr>';
+      });
+      html += '</table>';
+    }
+
+    if (!html) html = '<div class="empty">该模块以图片示例为主</div>';
+    panel.innerHTML = html;
+    ct.appendChild(panel);
+  });
+}
+
+function goPhoto(i){
+  currentSub = i;
+  document.querySelectorAll('#photo-subnav .sub-tab').forEach(function(t, idx){t.classList.toggle('on', idx === i)});
+  document.querySelectorAll('#photo-content .sub-panel').forEach(function(p, idx){p.style.display = idx === i ? 'block' : 'none'});
+}
+
+function buildQA(){
+  const cats = ['全部'];
+  qaData.forEach(function(q){ if (q.type && !cats.includes(q.type)) cats.push(q.type); });
+
+  const catDiv = document.getElementById('qa-cats');
+  catDiv.innerHTML = '';
+  cats.forEach(function(c){
+    const btn = document.createElement('button');
+    btn.className = 'qa-cat' + (c === '全部' ? ' on' : '');
+    btn.textContent = c;
+    btn.onclick = function(){qaFilter = c === '全部' ? 'all' : c; renderQA();};
+    catDiv.appendChild(btn);
+  });
+  renderQA();
+}
+
+function renderQA(items){
+  items = items || qaData;
+  const container = document.getElementById('qa-content');
+  container.innerHTML = '';
+  const filtered = items.filter(function(q){ return qaFilter === 'all' || q.type === qaFilter; });
+
+  if (filtered.length === 0) {
+    container.innerHTML = '<div class="qa-empty">未搜索到结果，请联系人工</div>';
+    return;
+  }
+
+  filtered.forEach(function(q){
+    const div = document.createElement('div');
+    div.className = 'qa-item';
+    div.innerHTML = '<div class="qa-q">' + esc(q.question) + '</div>' +
+                    '<div class="qa-a">' + fmt(q.answer) + '</div>' +
+                    (q.type ? '<span class="qa-tag">' + esc(q.type) + '</span>' : '');
+    container.appendChild(div);
+  });
+}
+
+function searchQA(){
+  const kw = document.getElementById('qa-search').value.trim().toLowerCase();
+  if (!kw) { renderQA(); return; }
+
+  const scored = qaData.map(function(q){
+    const qText = q.question.toLowerCase();
+    const aText = q.answer.toLowerCase();
+    let score = 0;
+    if (qText === kw) score += 100;
+    if (qText.includes(kw)) score += 50;
+    if (aText.includes(kw)) score += 20;
+    const kws = kw.split(/s+/).filter(Boolean);
+    kws.forEach(function(k){ if (qText.includes(k)) score += 10; if (aText.includes(k)) score += 5; });
+    return {q, score};
+  }).filter(function(item){ return item.score > 0; }).sort(function(a,b){ return b.score - a.score; }).map(function(item){ return item.q; });
+
+  renderQA(scored);
+}
+
+function buildSN(){
+  const catDiv = document.getElementById('sn-cats');
+  Object.keys(snData).forEach(function(cat){
+    const btn = document.createElement('button');
+    btn.className = 'sn-cat' + (cat === snCategory ? ' on' : '');
+    btn.textContent = cat;
+    btn.onclick = function(){snCategory = cat; snBrand = Object.keys(snData[cat])[0]; renderSN();};
+    catDiv.appendChild(btn);
+  });
+  if (!snBrand || !snData[snCategory][snBrand]) snBrand = Object.keys(snData[snCategory])[0];
+  renderSN();
+}
+
+function renderSN(){
+  const brandDiv = document.getElementById('sn-brands');
+  brandDiv.innerHTML = '';
+  const brands = Object.keys(snData[snCategory] || {});
+  brands.forEach(function(b){
+    const btn = document.createElement('button');
+    btn.className = 'sn-brand' + (b === snBrand ? ' on' : '');
+    btn.textContent = b;
+    btn.onclick = function(){snBrand = b; renderSN();};
+    brandDiv.appendChild(btn);
+  });
+
+  const ct = document.getElementById('sn-content');
+  const method = snData[snCategory] && snData[snCategory][snBrand];
+  ct.innerHTML = '<div class="sn-content">' +
+                   '<div class="sn-brand-title">' + esc(snBrand) + '</div>' +
+                   '<div class="sn-step">' + esc(method) + '</div>' +
+                 '</div>';
+}
+
+function zoom(s){document.getElementById('zi').src=s;document.getElementById('zm').classList.add('show')}
+function closeZm(){document.getElementById('zm').classList.remove('show')}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeZm()});
+
+buildPhoto();
+</script>
+</body>
+</html>
