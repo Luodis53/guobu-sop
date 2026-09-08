@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
+<meta name="theme-color" content="#dc2626">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>国补操作指引</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon.svg">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,"Helvetica Neue","Microsoft YaHei",sans-serif;background:#fafafa;color:#1f1f1f;font-size:15px;line-height:1.65;-webkit-text-size-adjust:100%}
@@ -361,6 +366,14 @@ function renderSN(){
 function zoom(s){document.getElementById('zi').src=s;document.getElementById('zm').classList.add('show')}
 function closeZm(){document.getElementById('zm').classList.remove('show')}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeZm()});
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('sw.js')
+      .then(function(registration) { console.log('SW registered:', registration.scope); })
+      .catch(function(err) { console.log('SW registration failed:', err); });
+  });
+}
 
 buildPhoto();
 </script>
