@@ -226,8 +226,7 @@ function goPhoto(i){
   document.querySelectorAll('#photo-content .sub-panel').forEach(function(p, idx){p.style.display = idx === i ? 'block' : 'none'});
 }
 
-function shouldCollapse(answer){ return answer.length > 120 || (answer.match(/
-/g) || []).length > 2; }
+function shouldCollapse(answer){ return answer.length > 120 || (answer.match(/\n/g) || []).length > 2; }
 function toggleQA(btn){
   const answer = btn.parentElement.querySelector('.qa-a');
   answer.classList.toggle('collapsed');
