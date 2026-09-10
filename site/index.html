@@ -58,6 +58,11 @@ td.sec{background:#fafafa;color:#1f1f1f;font-weight:700;font-size:14px;border-le
 .qa-item:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.1);border-left-color:#dc2626}
 .qa-q{font-size:16px;font-weight:700;color:#b91c1c;margin-bottom:10px;line-height:1.55}
 .qa-a{font-size:14px;color:#4b5563;line-height:1.9}
+.qa-a.collapsed{max-height:80px;overflow:hidden;position:relative}
+.qa-a.collapsed::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30px;background:linear-gradient(to bottom,transparent,#fff);pointer-events:none}
+.qa-toggle{background:none;border:none;color:#dc2626;font-size:13px;cursor:pointer;padding:8px 0 0;font-weight:600;display:flex;align-items:center;gap:4px}
+.qa-toggle::after{content:'展开';display:inline-block;transition:transform .2s ease}
+.qa-toggle.expanded::after{content:'收起'}
 .qa-tag{display:inline-block;font-size:11px;color:#6b7280;background:#f3f4f6;padding:4px 12px;border-radius:12px;margin-top:12px;font-weight:500}
 .qa-empty{text-align:center;padding:52px 20px;color:#6b7280;font-size:15px}
 .qa-highfreq{background:linear-gradient(135deg,#fef2f2,#fff5f5);border:1.5px solid #fca5a5;border-radius:14px;padding:18px;margin-bottom:18px;box-shadow:0 2px 8px rgba(220,38,38,.06)}
@@ -221,6 +226,14 @@ function goPhoto(i){
   document.querySelectorAll('#photo-content .sub-panel').forEach(function(p, idx){p.style.display = idx === i ? 'block' : 'none'});
 }
 
+function shouldCollapse(answer){ return answer.length > 120 || (answer.match(/
+/g) || []).length > 2; }
+function toggleQA(btn){
+  const answer = btn.parentElement.querySelector('.qa-a');
+  answer.classList.toggle('collapsed');
+  btn.classList.toggle('expanded');
+}
+
 function buildHighFreq(){
   const highFreqQuestions = [
     '外包装sn已经被涂抹之后，审核不通过要求补拍怎么办',
@@ -233,10 +246,12 @@ function buildHighFreq(){
   highFreqQuestions.forEach(function(qText){
     const q = qaData.find(function(item){ return item.question === qText; });
     if (!q) return;
+    const collapse = shouldCollapse(q.answer);
     const div = document.createElement('div');
     div.className = 'qa-highfreq-item';
     div.innerHTML = '<div class="qa-q">' + esc(q.question) + '</div>' +
-                    '<div class="qa-a">' + fmt(q.answer) + '</div>';
+                    '<div class="qa-a' + (collapse ? ' collapsed' : '') + '">' + fmt(q.answer) + '</div>' +
+                    (collapse ? '<button class="qa-toggle" onclick="toggleQA(this)"></button>' : '');
     list.appendChild(div);
   });
   container.appendChild(list);
@@ -276,10 +291,12 @@ function renderQA(items){
   }
 
   filtered.forEach(function(q){
+    const collapse = shouldCollapse(q.answer);
     const div = document.createElement('div');
     div.className = 'qa-item';
     div.innerHTML = '<div class="qa-q">' + esc(q.question) + '</div>' +
-                    '<div class="qa-a">' + fmt(q.answer) + '</div>' +
+                    '<div class="qa-a' + (collapse ? ' collapsed' : '') + '">' + fmt(q.answer) + '</div>' +
+                    (collapse ? '<button class="qa-toggle" onclick="toggleQA(this)"></button>' : '') +
                     (q.type ? '<span class="qa-tag">' + esc(q.type) + '</span>' : '');
     container.appendChild(div);
   });
